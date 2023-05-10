@@ -6,4 +6,5 @@
  *
  */
 module PROYECTOINTEGRADOR {
+	requires java.desktop;
 }
