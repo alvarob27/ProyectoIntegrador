@@ -71,13 +71,4 @@ public class Login extends JFrame {
 		contentPane.add(lblComprobacion);
 	}
 
-	public String getUsuario() {
-
-		return txtUsuario.getText();
-	}
-
-	public String getPasswd() {
-
-		return String.valueOf(txtPasswd.getPassword());
-	}
 }
