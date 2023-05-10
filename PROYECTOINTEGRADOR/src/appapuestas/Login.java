@@ -16,9 +16,9 @@ public class Login extends JFrame {
 	private JTextField txtUsuario;
 	private JPasswordField txtPasswd;
 	private JLabel lblComprobacion;
+	static Login frame = new Login();
 
 	public static void main(String[] args) {
-		Login frame = new Login();
 		frame.setVisible(true);
 
 	}
@@ -57,6 +57,8 @@ public class Login extends JFrame {
 				
 				if(txtUsuario.getText().equals(user)&&String.valueOf(txtPasswd.getPassword()).equals(passwd)) {
 					lblComprobacion.setText("Usuario y contraseña correctos");
+					frame.setVisible(false);
+					
 				}
 				else {
 					lblComprobacion.setText("Usuario y contraseña incorrectos");
