@@ -13,33 +13,33 @@ import java.awt.Panel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
 
 public class EquipoMostrarSaldo extends JFrame{
 	
-	public static void main(String[] args) {
-
-		EquipoMostrarSaldo window = new EquipoMostrarSaldo();
-		window.setBounds(100, 100, 749, 533);
-		
-
-}
 	private JTable table;
 	public EquipoMostrarSaldo() {
+		setBounds(100, 100, 861, 578);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(119, 136, 153));
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("SALDO DE LOS EQUIPOS");
-		lblNewLabel.setBounds(148, 33, 189, 28);
-		panel.add(lblNewLabel);
+		JLabel lblTitulo = new JLabel("saldo de equipos");
+		lblTitulo.setForeground(new Color(255, 255, 255));
+		lblTitulo.setFont(new Font("Star Jedi", Font.PLAIN, 21));
+		lblTitulo.setBounds(308, 20, 364, 55);
+		panel.add(lblTitulo);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(29, 85, 651, 329);
+		scrollPane.setBounds(98, 174, 651, 329);
 		panel.add(scrollPane);
 		
 		table = new JTable();
+		table.setBackground(new Color(240, 248, 255));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},
@@ -68,13 +68,18 @@ public class EquipoMostrarSaldo extends JFrame{
 		));
 		scrollPane.setViewportView(table);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(326, 37, 115, 21);
-		panel.add(comboBox);
+		JComboBox comboEquipos = new JComboBox();
+		comboEquipos.setBounds(364, 110, 115, 21);
+		panel.add(comboEquipos);
 		
-		JButton btnNewButton = new JButton("BUSCAR");
-		btnNewButton.setBounds(470, 37, 85, 21);
-		panel.add(btnNewButton);
+		JButton btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setBounds(501, 110, 85, 21);
+		panel.add(btnBuscar);
+		
+		JLabel lbl = new JLabel("EQUIPOS");
+		lbl.setForeground(new Color(255, 255, 255));
+		lbl.setBounds(288, 103, 102, 34);
+		panel.add(lbl);
 		setVisible(true);
 	}
 }

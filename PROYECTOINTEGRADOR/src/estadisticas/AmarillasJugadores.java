@@ -9,29 +9,37 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class AmarillasJugadores extends JFrame {
-    private JTable table;
+    private JTable tableAmarillasJugador;
+    private JLabel lblAmarillasJugador;
 
     public AmarillasJugadores() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelAmarillasJugador = new JPanel();
+        panelAmarillasJugador.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelAmarillasJugador, BorderLayout.CENTER);
+        panelAmarillasJugador.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("AmarillasJugador");
-        lblNewLabel.setBounds(295, 50, 129, 20);
-        panel.add(lblNewLabel);
+        lblAmarillasJugador = new JLabel("AMARILLAS - JUGADOR");
+        lblAmarillasJugador.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblAmarillasJugador.setForeground(new Color(255, 255, 255));
+        lblAmarillasJugador.setBounds(260, 22, 298, 29);
+        panelAmarillasJugador.add(lblAmarillasJugador);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnAmarillasJugador = new JButton("BUSCAR");
+        btnAmarillasJugador.setBounds(423, 61, 85, 21);
+        panelAmarillasJugador.add(btnAmarillasJugador);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneAmarillasJugador = new JScrollPane();
+        scrollPaneAmarillasJugador.setBounds(50, 106, 674, 327);
+        panelAmarillasJugador.add(scrollPaneAmarillasJugador);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableAmarillasJugador = new JTable();
+        tableAmarillasJugador.setBackground(new Color(240, 248, 255));
+        tableAmarillasJugador.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -58,11 +66,11 @@ public class AmarillasJugadores extends JFrame {
                         "JUGADOR", "EQUIPO", "AMARILLAS",  
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneAmarillasJugador.setViewportView(tableAmarillasJugador);
 
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboAmarillasJugador = new JComboBox<String>();
+        comboAmarillasJugador.setBounds(270, 61, 120, 21);
+        panelAmarillasJugador.add(comboAmarillasJugador);
     }
 
     public static void main(String[] args) {

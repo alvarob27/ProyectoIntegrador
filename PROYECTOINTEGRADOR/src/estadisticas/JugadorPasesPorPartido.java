@@ -9,33 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
+import java.awt.Color;
 
 public class JugadorPasesPorPartido extends JFrame {
-    private JTable table;
+    private JTable tablePasesJugadorPartido;
 
     public JugadorPasesPorPartido() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelPasesJugadorPartido = new JPanel();
+        panelPasesJugadorPartido.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelPasesJugadorPartido, BorderLayout.CENTER);
+        panelPasesJugadorPartido.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("PASES POR PARTIDO - JUGADORES");
-        lblNewLabel.setBounds(50, 50, 250, 20);
-        panel.add(lblNewLabel);
+        JLabel lblPasesJugadorPartido = new JLabel("PASES POR PARTIDO - JUGADORES");
+        lblPasesJugadorPartido.setForeground(new Color(255, 255, 255));
+        lblPasesJugadorPartido.setFont(new Font("Tahoma", Font.PLAIN, 26));
+        lblPasesJugadorPartido.setBounds(174, 10, 454, 37);
+        panelPasesJugadorPartido.add(lblPasesJugadorPartido);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(283, 50, 120, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboPasesJugadorPartido = new JComboBox<>();
+        comboPasesJugadorPartido.setBounds(211, 57, 120, 21);
+        panelPasesJugadorPartido.add(comboPasesJugadorPartido);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnPasesJugadorPartido = new JButton("BUSCAR");
+        btnPasesJugadorPartido.setBounds(472, 57, 85, 21);
+        panelPasesJugadorPartido.add(btnPasesJugadorPartido);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPanePasesJugadorPartido = new JScrollPane();
+        scrollPanePasesJugadorPartido.setBounds(50, 106, 674, 327);
+        panelPasesJugadorPartido.add(scrollPanePasesJugadorPartido);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tablePasesJugadorPartido = new JTable();
+        tablePasesJugadorPartido.setBackground(new Color(240, 248, 255));
+        tablePasesJugadorPartido.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -61,11 +68,11 @@ public class JugadorPasesPorPartido extends JFrame {
                         "Jugador", "Pases Realizados", "Partidos Jugados", "Porcentaje de Éxito", 
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPanePasesJugadorPartido.setViewportView(tablePasesJugadorPartido);
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboPasesJugadorPartido2 = new JComboBox<String>();
+        comboPasesJugadorPartido2.setBounds(341, 57, 120, 21);
+        panelPasesJugadorPartido.add(comboPasesJugadorPartido2);
     }
 
     public static void main(String[] args) {

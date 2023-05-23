@@ -9,33 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class TirosPorPartido extends JFrame {
-    private JTable table;
+    private JTable tableTirosPartidos;
 
     public TirosPorPartido() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelTirosPartidos = new JPanel();
+        panelTirosPartidos.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelTirosPartidos, BorderLayout.CENTER);
+        panelTirosPartidos.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("TIROS POR PARTIDO");
-        lblNewLabel.setBounds(50, 50, 200, 20);
-        panel.add(lblNewLabel);
+        JLabel lblTirosPartidos = new JLabel("TIROS POR PARTIDO");
+        lblTirosPartidos.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblTirosPartidos.setForeground(new Color(255, 255, 255));
+        lblTirosPartidos.setBounds(278, 10, 269, 30);
+        panelTirosPartidos.add(lblTirosPartidos);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(283, 50, 120, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboTirosPartidos = new JComboBox<>();
+        comboTirosPartidos.setBounds(229, 50, 120, 21);
+        panelTirosPartidos.add(comboTirosPartidos);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnTirosPartidos = new JButton("BUSCAR");
+        btnTirosPartidos.setBounds(489, 50, 85, 21);
+        panelTirosPartidos.add(btnTirosPartidos);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneTirosPartidos = new JScrollPane();
+        scrollPaneTirosPartidos.setBounds(50, 106, 674, 327);
+        panelTirosPartidos.add(scrollPaneTirosPartidos);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableTirosPartidos = new JTable();
+        tableTirosPartidos.setBackground(new Color(240, 248, 255));
+        tableTirosPartidos.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -61,11 +68,11 @@ public class TirosPorPartido extends JFrame {
                         "Equipo", "Tiros Totales", "Partidos", "Porcentaje de Tiros", 
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneTirosPartidos.setViewportView(tableTirosPartidos);
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboTirosPartidos2 = new JComboBox<String>();
+        comboTirosPartidos2.setBounds(359, 50, 120, 21);
+        panelTirosPartidos.add(comboTirosPartidos2);
     }
 
     public static void main(String[] args) {

@@ -8,60 +8,68 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
+import java.awt.Color;
 
 public class AmarillasEquipos extends JFrame {
-    private JTable table;
+    private JTable tableAmarillasEquipos;
 
     public AmarillasEquipos() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelAmarillaEquipos = new JPanel();
+        panelAmarillaEquipos.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelAmarillaEquipos, BorderLayout.CENTER);
+        panelAmarillaEquipos.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("AmarillasEquipos");
-        lblNewLabel.setBounds(295, 50, 129, 20);
-        panel.add(lblNewLabel);
+        JLabel lblAmarillasEquipos = new JLabel("AMARILLAS - EQUIPOS");
+        lblAmarillasEquipos.setForeground(new Color(255, 255, 255));
+        lblAmarillasEquipos.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblAmarillasEquipos.setBounds(269, 10, 278, 30);
+        panelAmarillaEquipos.add(lblAmarillasEquipos);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnBuscar = new JButton("BUSCAR");
+        btnBuscar.setBounds(419, 50, 85, 21);
+        panelAmarillaEquipos.add(btnBuscar);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneAmarillasEquipos = new JScrollPane();
+        scrollPaneAmarillasEquipos.setBounds(50, 106, 674, 327);
+        panelAmarillaEquipos.add(scrollPaneAmarillasEquipos);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableAmarillasEquipos = new JTable();
+        tableAmarillasEquipos.setForeground(new Color(240, 248, 255));
+        tableAmarillasEquipos.setModel(new DefaultTableModel(
                 new Object[][] {
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
                 },
                 new String[] {
-                        "EQUIPO", "JUGADOR", "AMARILLAS",  
+                        "EQUIPO","AMARILLAS",  
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneAmarillasEquipos.setViewportView(tableAmarillasEquipos);
 
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboAmarillasEquipos = new JComboBox<String>();
+        comboAmarillasEquipos.setBounds(279, 50, 120, 21);
+        panelAmarillaEquipos.add(comboAmarillasEquipos);
     }
 
     public static void main(String[] args) {

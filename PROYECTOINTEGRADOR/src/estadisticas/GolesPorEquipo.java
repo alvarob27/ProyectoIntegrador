@@ -9,33 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class GolesPorEquipo extends JFrame {
-    private JTable table;
+    private JTable tableGolesEJ;
 
     public GolesPorEquipo() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelGolesEJ = new JPanel();
+        panelGolesEJ.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelGolesEJ, BorderLayout.CENTER);
+        panelGolesEJ.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("GOLES POR EQUIPO Y JUGADOR");
-        lblNewLabel.setBounds(111, 34, 202, 20);
-        panel.add(lblNewLabel);
+        JLabel lbLGolesEJ = new JLabel("GOLES POR EQUIPO Y JUGADOR");
+        lbLGolesEJ.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lbLGolesEJ.setForeground(new Color(255, 255, 255));
+        lbLGolesEJ.setBounds(217, 10, 370, 20);
+        panelGolesEJ.add(lbLGolesEJ);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(340, 34, 122, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboGolesEJ = new JComboBox<>();
+        comboGolesEJ.setBounds(217, 40, 122, 21);
+        panelGolesEJ.add(comboGolesEJ);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(626, 34, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnGolesEJ = new JButton("BUSCAR");
+        btnGolesEJ.setBounds(481, 40, 85, 21);
+        panelGolesEJ.add(btnGolesEJ);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(97, 87, 687, 330);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneGolesEJ = new JScrollPane();
+        scrollPaneGolesEJ.setBounds(53, 89, 687, 330);
+        panelGolesEJ.add(scrollPaneGolesEJ);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableGolesEJ = new JTable();
+        tableGolesEJ.setBackground(new Color(240, 248, 255));
+        tableGolesEJ.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -61,11 +68,11 @@ public class GolesPorEquipo extends JFrame {
                         "Nombre", "Apellidos", "Equipo", "Goles"
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneGolesEJ.setViewportView(tableGolesEJ);
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(472, 34, 122, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboGolesEJ2 = new JComboBox<String>();
+        comboGolesEJ2.setBounds(349, 40, 122, 21);
+        panelGolesEJ.add(comboGolesEJ2);
     }
 
     public static void main(String[] args) {

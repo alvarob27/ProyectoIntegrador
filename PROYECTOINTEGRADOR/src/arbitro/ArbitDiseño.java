@@ -9,33 +9,46 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ArbitDiseño extends JFrame {
-    private JTable table;
+    private JTable tableArbitro;
 
     public ArbitDiseño() {
+    	setBounds(100,100,861,578);
         JPanel panel = new JPanel();
+        panel.setBackground(new Color(119, 136, 153));
         getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("MEDIA - PARTIDOS ARBITRADOS");
-        lblNewLabel.setBounds(144, 50, 250, 20);
-        panel.add(lblNewLabel);
+        JLabel lblArbitrosPrincipal = new JLabel("ARBITROS");
+        lblArbitrosPrincipal.setForeground(new Color(255, 255, 255));
+        lblArbitrosPrincipal.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblArbitrosPrincipal.setBounds(313, 10, 133, 51);
+        panel.add(lblArbitrosPrincipal);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(376, 50, 120, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboArbitros = new JComboBox<>();
+        comboArbitros.setBounds(242, 61, 120, 21);
+        panel.add(comboArbitros);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(521, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnBuscarArbitro = new JButton("BUSCAR");
+        btnBuscarArbitro.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        btnBuscarArbitro.setBounds(393, 61, 85, 21);
+        panel.add(btnBuscarArbitro);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneArbitro = new JScrollPane();
+        scrollPaneArbitro.setBounds(50, 106, 674, 327);
+        panel.add(scrollPaneArbitro);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableArbitro = new JTable();
+        tableArbitro.setBackground(new Color(240, 248, 255));
+        tableArbitro.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null, null, null, null},
                         {null, null, null, null, null, null, null},
@@ -58,10 +71,10 @@ public class ArbitDiseño extends JFrame {
                         {null, null, null, null, null, null, null},
                 },
                 new String[] {
-                		"NOMBRE", "APELLIDOS", "NumTarjetasAmarillas", "NumTarjetasRojas", "Estado", "Debut", "NumPartidosArbitrados"
+                		"Nombre", "Apellidos", "Tarjetas Amarillas", "Tarjetas Rojas", "Estado", "Debut", "Partidos Arbitrados"
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneArbitro.setViewportView(tableArbitro);
     }
 
     public static void main(String[] args) {

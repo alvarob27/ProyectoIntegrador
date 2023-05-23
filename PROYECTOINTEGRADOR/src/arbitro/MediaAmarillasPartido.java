@@ -10,33 +10,40 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class MediaAmarillasPartido extends JFrame {
-    private JTable table;
+    private JTable tableMediaTarjetasAmarillas;
 
     public MediaAmarillasPartido() {
+    	setBounds(100,100,861,578);
         JPanel panel = new JPanel();
+        panel.setBackground(new Color(119, 136, 153));
         getContentPane().add(panel);
         panel.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("MEDIA - TARJETAS AMARILLAS POR PARTIDO");
-        lblNewLabel.setBounds(89, 83, 294, 20);
-        panel.add(lblNewLabel);
+        JLabel lblTarjetasAmarillasPartido = new JLabel("MEDIA - TARJETAS AMARILLAS POR PARTIDO");
+        lblTarjetasAmarillasPartido.setForeground(new Color(255, 255, 255));
+        lblTarjetasAmarillasPartido.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblTarjetasAmarillasPartido.setBounds(170, 27, 507, 47);
+        panel.add(lblTarjetasAmarillasPartido);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton btnBuscarTarjetasAmarillas = new JButton("BUSCAR");
+        btnBuscarTarjetasAmarillas.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
-        btnNewButton.setBounds(535, 83, 85, 21);
-        panel.add(btnNewButton);
+        btnBuscarTarjetasAmarillas.setBounds(422, 84, 85, 21);
+        panel.add(btnBuscarTarjetasAmarillas);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(52, 168, 674, 203);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneMediaTarjetasAmarillas = new JScrollPane();
+        scrollPaneMediaTarjetasAmarillas.setBounds(60, 141, 674, 203);
+        panel.add(scrollPaneMediaTarjetasAmarillas);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableMediaTarjetasAmarillas = new JTable();
+        tableMediaTarjetasAmarillas.setBackground(new Color(240, 248, 255));
+        tableMediaTarjetasAmarillas.setModel(new DefaultTableModel(
         	new Object[][] {
         		{null, null, null, null},
         		{null, null, null, null},
@@ -54,11 +61,11 @@ public class MediaAmarillasPartido extends JFrame {
         		"Nombre", "Tarjetas Amarillas", "Partidos Arbitrados", "Media"
         	}
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneMediaTarjetasAmarillas.setViewportView(tableMediaTarjetasAmarillas);
         
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(393, 83, 92, 21);
-        panel.add(comboBox);
+        JComboBox comboMediaTarjetasAmarillas = new JComboBox();
+        comboMediaTarjetasAmarillas.setBounds(303, 84, 92, 21);
+        panel.add(comboMediaTarjetasAmarillas);
     }
 
     public static void main(String[] args) {

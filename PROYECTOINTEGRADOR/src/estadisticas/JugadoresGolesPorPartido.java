@@ -9,33 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class JugadoresGolesPorPartido extends JFrame {
-    private JTable table;
+    private JTable tableJugadoresGolesPartido;
 
     public JugadoresGolesPorPartido() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelJugadoresGolesPartido = new JPanel();
+        panelJugadoresGolesPartido.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelJugadoresGolesPartido, BorderLayout.CENTER);
+        panelJugadoresGolesPartido.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("JUGADORES - GOLES POR PARTIDO");
-        lblNewLabel.setBounds(50, 50, 250, 20);
-        panel.add(lblNewLabel);
+        JLabel lblJugadoresGolesPartido = new JLabel("JUGADORES - GOLES POR PARTIDO");
+        lblJugadoresGolesPartido.setForeground(new Color(255, 255, 255));
+        lblJugadoresGolesPartido.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblJugadoresGolesPartido.setBackground(new Color(255, 255, 255));
+        lblJugadoresGolesPartido.setBounds(197, 13, 401, 27);
+        panelJugadoresGolesPartido.add(lblJugadoresGolesPartido);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(283, 50, 120, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboJugadoresGolesPartido = new JComboBox<>();
+        comboJugadoresGolesPartido.setBounds(207, 50, 120, 21);
+        panelJugadoresGolesPartido.add(comboJugadoresGolesPartido);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnJugadoresGolesPartido = new JButton("BUSCAR");
+        btnJugadoresGolesPartido.setBounds(467, 50, 85, 21);
+        panelJugadoresGolesPartido.add(btnJugadoresGolesPartido);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 659, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneJugadoresGolesPartido = new JScrollPane();
+        scrollPaneJugadoresGolesPartido.setBounds(50, 106, 659, 327);
+        panelJugadoresGolesPartido.add(scrollPaneJugadoresGolesPartido);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableJugadoresGolesPartido = new JTable();
+        tableJugadoresGolesPartido.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null,null,null},
                         {null, null, null, null,null,null},
@@ -61,11 +68,11 @@ public class JugadoresGolesPorPartido extends JFrame {
                         "Nombre", "Apellidos", "Equipo", "Goles", "Partidos Jugados", "Saldo"
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneJugadoresGolesPartido.setViewportView(tableJugadoresGolesPartido);
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboJugadoresGolesPartido2 = new JComboBox<String>();
+        comboJugadoresGolesPartido2.setBounds(337, 50, 120, 21);
+        panelJugadoresGolesPartido.add(comboJugadoresGolesPartido2);
     }
 
     public static void main(String[] args) {

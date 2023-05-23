@@ -9,29 +9,36 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class CornesPorPartido extends JFrame {
-    private JTable table;
+    private JTable tableCornersPartido;
 
     public CornesPorPartido() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelCornersPartido = new JPanel();
+        panelCornersPartido.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelCornersPartido, BorderLayout.CENTER);
+        panelCornersPartido.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("CornersPorPartido");
-        lblNewLabel.setBounds(295, 50, 129, 20);
-        panel.add(lblNewLabel);
+        JLabel lblCornersPartido = new JLabel("CORNERS POR PARTIDO");
+        lblCornersPartido.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblCornersPartido.setForeground(new Color(255, 255, 255));
+        lblCornersPartido.setBounds(273, 10, 276, 39);
+        panelCornersPartido.add(lblCornersPartido);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnCornersPartido = new JButton("BUSCAR");
+        btnCornersPartido.setBounds(428, 59, 85, 21);
+        panelCornersPartido.add(btnCornersPartido);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneCornersPartido = new JScrollPane();
+        scrollPaneCornersPartido.setBounds(50, 106, 674, 327);
+        panelCornersPartido.add(scrollPaneCornersPartido);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableCornersPartido = new JTable();
+        tableCornersPartido.setBackground(new Color(240, 248, 255));
+        tableCornersPartido.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -58,11 +65,11 @@ public class CornesPorPartido extends JFrame {
                         "PARTIDO", "EQUIPO", "CORNERS",  
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneCornersPartido.setViewportView(tableCornersPartido);
 
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboCornersPartido = new JComboBox<String>();
+        comboCornersPartido.setBounds(295, 59, 120, 21);
+        panelCornersPartido.add(comboCornersPartido);
     }
 
     public static void main(String[] args) {

@@ -9,33 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class TirosPuertaPorPartido extends JFrame {
-    private JTable table;
+    private JTable tableTirosPuerta;
 
     public TirosPuertaPorPartido() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelTirosPuerta = new JPanel();
+        panelTirosPuerta.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelTirosPuerta, BorderLayout.CENTER);
+        panelTirosPuerta.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("TIROS A PUERTA POR PARTIDO");
-        lblNewLabel.setBounds(50, 50, 250, 20);
-        panel.add(lblNewLabel);
+        JLabel lblTirosPuerta = new JLabel("TIROS A PUERTA POR PARTIDO");
+        lblTirosPuerta.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblTirosPuerta.setForeground(new Color(255, 255, 255));
+        lblTirosPuerta.setBounds(233, 10, 375, 29);
+        panelTirosPuerta.add(lblTirosPuerta);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(283, 50, 120, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboTirosPuerta = new JComboBox<>();
+        comboTirosPuerta.setBounds(233, 50, 120, 21);
+        panelTirosPuerta.add(comboTirosPuerta);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnTirosPuerta = new JButton("BUSCAR");
+        btnTirosPuerta.setBounds(493, 50, 85, 21);
+        panelTirosPuerta.add(btnTirosPuerta);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneTirosPuerta = new JScrollPane();
+        scrollPaneTirosPuerta.setBounds(50, 106, 674, 327);
+        panelTirosPuerta.add(scrollPaneTirosPuerta);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableTirosPuerta = new JTable();
+        tableTirosPuerta.setBackground(new Color(240, 248, 255));
+        tableTirosPuerta.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -61,11 +68,11 @@ public class TirosPuertaPorPartido extends JFrame {
                         "Equipo", "Tiros a Puerta", "Numero de Partidos", "Porcentaje de Tiros a Puerta", 
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneTirosPuerta.setViewportView(tableTirosPuerta);
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboTirosPuerta2 = new JComboBox<String>();
+        comboTirosPuerta2.setBounds(363, 50, 120, 21);
+        panelTirosPuerta.add(comboTirosPuerta2);
     }
 
     public static void main(String[] args) {

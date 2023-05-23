@@ -9,33 +9,40 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
+import java.awt.Color;
 
 public class PasesTotalesEquipos extends JFrame {
-    private JTable table;
+    private JTable tablePasesTotales;
 
     public PasesTotalesEquipos() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelPasesTotales = new JPanel();
+        panelPasesTotales.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelPasesTotales, BorderLayout.CENTER);
+        panelPasesTotales.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("PASES TOTALES - EQUIPOS");
-        lblNewLabel.setBounds(50, 50, 200, 20);
-        panel.add(lblNewLabel);
+        JLabel lblPasesTotales = new JLabel("PASES TOTALES - EQUIPOS");
+        lblPasesTotales.setForeground(new Color(255, 255, 255));
+        lblPasesTotales.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblPasesTotales.setBounds(248, 23, 315, 29);
+        panelPasesTotales.add(lblPasesTotales);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(283, 50, 120, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboPasesTotales = new JComboBox<>();
+        comboPasesTotales.setBounds(231, 62, 120, 21);
+        panelPasesTotales.add(comboPasesTotales);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnPasesTotales = new JButton("BUSCAR");
+        btnPasesTotales.setBounds(491, 62, 85, 21);
+        panelPasesTotales.add(btnPasesTotales);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPanePasesTotales = new JScrollPane();
+        scrollPanePasesTotales.setBounds(50, 106, 674, 327);
+        panelPasesTotales.add(scrollPanePasesTotales);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tablePasesTotales = new JTable();
+        tablePasesTotales.setBackground(new Color(240, 248, 255));
+        tablePasesTotales.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -61,11 +68,11 @@ public class PasesTotalesEquipos extends JFrame {
                         "Equipo", "Pases Local", "Pases Visitante", "Total", 
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPanePasesTotales.setViewportView(tablePasesTotales);
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboPasesTotales2 = new JComboBox<String>();
+        comboPasesTotales2.setBounds(361, 62, 120, 21);
+        panelPasesTotales.add(comboPasesTotales2);
     }
 
     public static void main(String[] args) {

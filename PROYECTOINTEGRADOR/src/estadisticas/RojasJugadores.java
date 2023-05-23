@@ -9,29 +9,36 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 public class RojasJugadores extends JFrame {
-    private JTable table;
+    private JTable tableRojasJugadores;
 
     public RojasJugadores() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelRojasJugadores = new JPanel();
+        panelRojasJugadores.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelRojasJugadores, BorderLayout.CENTER);
+        panelRojasJugadores.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("RojasJugadores");
-        lblNewLabel.setBounds(295, 50, 129, 20);
-        panel.add(lblNewLabel);
+        JLabel lblRojasJugadores = new JLabel("ROJAS JUGADORES");
+        lblRojasJugadores.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblRojasJugadores.setForeground(new Color(255, 255, 255));
+        lblRojasJugadores.setBounds(302, 10, 230, 20);
+        panelRojasJugadores.add(lblRojasJugadores);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnRojasJugadores = new JButton("BUSCAR");
+        btnRojasJugadores.setBounds(491, 50, 85, 21);
+        panelRojasJugadores.add(btnRojasJugadores);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPaneRojasJugadores = new JScrollPane();
+        scrollPaneRojasJugadores.setBounds(65, 106, 674, 327);
+        panelRojasJugadores.add(scrollPaneRojasJugadores);
 
-        table = new JTable();
-        table.setModel(new DefaultTableModel(
+        tableRojasJugadores = new JTable();
+        tableRojasJugadores.setBackground(new Color(240, 248, 255));
+        tableRojasJugadores.setModel(new DefaultTableModel(
                 new Object[][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -58,11 +65,15 @@ public class RojasJugadores extends JFrame {
                         "JUGADOR", "EQUIPO", "ROJAS",  
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPaneRojasJugadores.setViewportView(tableRojasJugadores);
 
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboRojasJugadores = new JComboBox<String>();
+        comboRojasJugadores.setBounds(231, 50, 120, 21);
+        panelRojasJugadores.add(comboRojasJugadores);
+        
+        JComboBox<String> comboRojasJugadores2 = new JComboBox<String>();
+        comboRojasJugadores2.setBounds(361, 50, 120, 21);
+        panelRojasJugadores.add(comboRojasJugadores2);
     }
 
     public static void main(String[] args) {

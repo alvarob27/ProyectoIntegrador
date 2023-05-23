@@ -9,30 +9,36 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
+import java.awt.Color;
 
 public class PosesionPorEquipos extends JFrame {
     private JTable table;
 
     public PosesionPorEquipos() {
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
-        panel.setLayout(null);
+    	setBounds(100,100,861,578);
+        JPanel panelPosesionBalon = new JPanel();
+        panelPosesionBalon.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelPosesionBalon, BorderLayout.CENTER);
+        panelPosesionBalon.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("POSESIÓN DE BALÓN - EQUIPOS");
-        lblNewLabel.setBounds(50, 50, 250, 20);
-        panel.add(lblNewLabel);
+        JLabel lblPosesionBalon = new JLabel("POSESIÓN DE BALÓN - EQUIPOS");
+        lblPosesionBalon.setForeground(new Color(255, 255, 255));
+        lblPosesionBalon.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        lblPosesionBalon.setBounds(228, 11, 362, 29);
+        panelPosesionBalon.add(lblPosesionBalon);
 
-        JComboBox<String> comboBox = new JComboBox<>();
-        comboBox.setBounds(283, 50, 120, 21);
-        panel.add(comboBox);
+        JComboBox<String> comboPosesionBalon = new JComboBox<>();
+        comboPosesionBalon.setBounds(238, 50, 120, 21);
+        panelPosesionBalon.add(comboPosesionBalon);
 
-        JButton btnNewButton = new JButton("BUSCAR");
-        btnNewButton.setBounds(573, 50, 85, 21);
-        panel.add(btnNewButton);
+        JButton btnPosesionBalon = new JButton("BUSCAR");
+        btnPosesionBalon.setBounds(498, 50, 85, 21);
+        panelPosesionBalon.add(btnPosesionBalon);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(50, 106, 674, 327);
-        panel.add(scrollPane);
+        JScrollPane scrollPanePosesionBalon = new JScrollPane();
+        scrollPanePosesionBalon.setBounds(65, 106, 674, 327);
+        panelPosesionBalon.add(scrollPanePosesionBalon);
 
         table = new JTable();
         table.setModel(new DefaultTableModel(
@@ -61,11 +67,11 @@ public class PosesionPorEquipos extends JFrame {
                         "Equipo", "Tiempo de Posesión", "Tiempos Muertos", "Porcentaje de Posesión", 
                 }
         ));
-        scrollPane.setViewportView(table);
+        scrollPanePosesionBalon.setViewportView(table);
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
-        comboBox_1.setBounds(422, 50, 120, 21);
-        panel.add(comboBox_1);
+        JComboBox<String> comboPosesionBalon2 = new JComboBox<String>();
+        comboPosesionBalon2.setBounds(368, 50, 120, 21);
+        panelPosesionBalon.add(comboPosesionBalon2);
     }
 
     public static void main(String[] args) {
