@@ -46,7 +46,7 @@ public class EquipoDiferenciaGoles extends JFrame{
 		panel.add(lblTitulo);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(113, 152, 602, 41);
+		scrollPane.setBounds(113, 152, 602, 37);
 		panel.add(scrollPane);
 		
 		table = new JTable();
@@ -62,7 +62,7 @@ public class EquipoDiferenciaGoles extends JFrame{
 		scrollPane.setViewportView(table);
 		
 		JComboBox comboEquipos = new JComboBox();
-		comboEquipos.setBounds(374, 102, 98, 21);
+		comboEquipos.setBounds(321, 102, 151, 21);
 		panel.add(comboEquipos);
 		
 		JButton btnBuscar = new JButton("BUSCAR");
@@ -112,7 +112,7 @@ public class EquipoDiferenciaGoles extends JFrame{
 		
 		JLabel lblNewLabel = new JLabel("Equipos");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(318, 102, 79, 21);
+		lblNewLabel.setBounds(266, 102, 79, 21);
 		panel.add(lblNewLabel);
 		setVisible(true);
 		

@@ -62,10 +62,6 @@ public class MenuPrincipal extends JFrame {
 		mnEquipo.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		menuBar.add(mnEquipo);
 		
-		JMenuItem mntmMostrarJugadores = new JMenuItem("Mostrar Jugadores");
-		mntmMostrarJugadores.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnEquipo.add(mntmMostrarJugadores);
-		
 		JMenuItem mntmDiferenciaGoles = new JMenuItem("Diferencia de goles");
 		mntmDiferenciaGoles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
