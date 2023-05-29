@@ -21,11 +21,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import equipos.EquipoDiferenciaGoles;
-import equipos.EquipoMostrarJugadores;
-import equipos.EquipoMostrarSaldo;
-import jugadores.JugadoresMediaAsistencias;
-import jugadores.JugadoresMediaGoles;
+import arbitro.ArbitDiseño;
+import arbitro.MediaAmarillasPartido;
+import arbitro.MediaRojasPartido;
+import arbitro.MediaTarjetas;
+import entrenadores.EntrenadorDiseño;
+import equipos.*;
+import estadio.EstadioDiseño;
+import estadio.SaberOcupacion;
+import estadisticas.*;
+import jugadores.*;
 
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -41,6 +46,22 @@ public class MenuPrincipal extends JFrame {
 	private EquipoDiferenciaGoles EquipoGoles;
 	private JugadoresMediaGoles JugadoresGoles;
 	private JugadoresMediaAsistencias JugadoresAsistencias;
+	private GolesEquipos EquiposGoles;
+	private AmarillasEquipos EquiposAmarillas;
+	private RojasEquipos EquiposRojas;
+	private JugadorTirosPorPartido TirosJugador;
+	private JugadorTirosPuertaPorPartido TirosPuertaJugador;
+	private CornersPorPartido EquiposCorners;
+	private TirosPorPartido EquiposTiros;
+	private TirosPuertaPorPartido EquiposTirosPuerta;
+	private PasesTotalesEquipos EquiposPases;
+	private EntrenadorDiseño entrenadores;
+	private EstadioDiseño EstadioPrincipal;
+	private SaberOcupacion saberOcupacion;
+	private ArbitDiseño arbitroDiseño;
+	private MediaAmarillasPartido mediaAmarillas;
+	private MediaRojasPartido mediaRojasPartido;
+	private MediaTarjetas mediaTarjetasPartido;
 	
 	
 	public static void main(String[] args) {
@@ -114,55 +135,160 @@ public class MenuPrincipal extends JFrame {
 		mnEstadisticas.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		menuBar.add(mnEstadisticas);
 		
-		JMenuItem mntmGoles = new JMenuItem("Goles");
+		JMenuItem mntmGoles = new JMenuItem("Goles de Equipos");
+		mntmGoles.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EquiposGoles = new GolesEquipos();
+				EquiposGoles.setVisible(true);
+				
+			}
+		});
 		mntmGoles.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnEstadisticas.add(mntmGoles);
 		
-		JMenuItem mntmPases = new JMenuItem("Pases");
-		mntmPases.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnEstadisticas.add(mntmPases);
+		JMenuItem mntmAmarillas = new JMenuItem("Amarillas de equipos");
+		mntmAmarillas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				EquiposAmarillas = new AmarillasEquipos();
+				EquiposAmarillas.setVisible(true);
+			}
+		});
 		
-		JMenuItem mntmPosesion = new JMenuItem("Posesión");
-		mntmPosesion.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnEstadisticas.add(mntmPosesion);
+		JMenuItem mntmTirosEquipos = new JMenuItem("Tiros de Equipos");
+		mntmTirosEquipos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EquiposTiros = new TirosPorPartido();
+				EquiposTiros.setVisible(true);
+				
+			}
+		});
+		mntmTirosEquipos.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		mnEstadisticas.add(mntmTirosEquipos);
 		
-		JMenuItem mntmTiros = new JMenuItem("Tiros");
-		mntmTiros.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnEstadisticas.add(mntmTiros);
+		JMenuItem mntmTirosPuertaEquipos = new JMenuItem("Tiros a Puerta de Equipos");
+		mntmTirosPuertaEquipos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				EquiposTirosPuerta = new TirosPuertaPorPartido();
+				EquiposTirosPuerta.setVisible(true);
+			}
+		});
+		mntmTirosPuertaEquipos.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		mnEstadisticas.add(mntmTirosPuertaEquipos);
 		
-		JMenuItem mntmTarjetas = new JMenuItem("Tarjetas");
-		mntmTarjetas.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnEstadisticas.add(mntmTarjetas);
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Pases de Equipos");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				EquiposPases = new PasesTotalesEquipos();
+				EquiposPases.setVisible(true);
+			}
+		});
+		mntmNewMenuItem_1.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		mnEstadisticas.add(mntmNewMenuItem_1);
 		
-		JMenuItem mntmCorners = new JMenuItem("Corners");
+		JMenuItem mntmCorners = new JMenuItem("Corners de Equipos");
+		mntmCorners.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				EquiposCorners = new CornersPorPartido();
+				EquiposCorners.setVisible(true);
+			}
+		});
 		mntmCorners.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnEstadisticas.add(mntmCorners);
+		mntmAmarillas.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		mnEstadisticas.add(mntmAmarillas);
 		
-		JMenu mnEntrenadores = new JMenu("Entrenadores");
-		mnEntrenadores.setForeground(Color.BLACK);
-		mnEntrenadores.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		menuBar.add(mnEntrenadores);
+		JMenuItem mntmRojas = new JMenuItem("Rojas de Equipos");
+		mntmRojas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				EquiposRojas = new RojasEquipos();
+				EquiposRojas.setVisible(true);
+			}
+		});
+		mntmRojas.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		mnEstadisticas.add(mntmRojas);
 		
-		JMenuItem mnEntrenadoresPrincipal = new JMenuItem("Entrenadores");
-		mnEntrenadoresPrincipal.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnEntrenadores.add(mnEntrenadoresPrincipal);
+		JMenuItem mntmTirosJugadores = new JMenuItem("Tiros de Jugadores");
+		mntmTirosJugadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				TirosJugador = new JugadorTirosPorPartido();
+				TirosJugador.setVisible(true);
+			}
+		});
+		mntmTirosJugadores.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		mnEstadisticas.add(mntmTirosJugadores);
 		
+		JMenuItem mntmTirosPuertaJugadores = new JMenuItem("Tiros a puerta de Jugadores");
+		mntmTirosPuertaJugadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				TirosPuertaJugador = new JugadorTirosPuertaPorPartido();
+				TirosPuertaJugador.setVisible(true);
+			}
+		});
+		mntmTirosPuertaJugadores.setFont(new Font("Monospaced", Font.PLAIN, 12));
+		mnEstadisticas.add(mntmTirosPuertaJugadores);
+		
+		//AQUÍ EMPIEZA ENTRENADORES
+		 JMenu mnEntrenadores = new JMenu("Entrenadores");
+	        mnEntrenadores.setForeground(Color.BLACK);
+	        mnEntrenadores.setFont(new Font("Monospaced", Font.PLAIN, 12));
+	        menuBar.add(mnEntrenadores);
+	        
+
+	     JMenuItem mnEntrenadoresPrincipal = new JMenuItem("Entrenadores");
+		 mnEntrenadoresPrincipal.addActionListener(new ActionListener() {
+		     	public void actionPerformed(ActionEvent e) {
+		     		entrenadores = new EntrenadorDiseño();
+		     		entrenadores.setVisible(true);
+		     }
+		 });
+	        
+	       
+	     mnEntrenadoresPrincipal.setFont(new Font("Monospaced", Font.PLAIN, 12));
+	     mnEntrenadores.add(mnEntrenadoresPrincipal);
+		
+	     
+	     
+	     //AQUI EMPIEZA ESTADIO
+	     
 		JMenu mnEstadio = new JMenu("Estadio");
 		mnEstadio.setForeground(Color.BLACK);
 		mnEstadio.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		menuBar.add(mnEstadio);
 		
 		JMenuItem mnEstadioPrincipal = new JMenuItem("Estadio ");
+		mnEstadioPrincipal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EstadioPrincipal = new EstadioDiseño();
+				EstadioPrincipal.setVisible(true);
+			}
+		});
 		mnEstadioPrincipal.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnEstadio.add(mnEstadioPrincipal);
 		
-		JMenuItem mnObtenerFechaPartidos = new JMenuItem("Obtener Fecha de los Partidos");
-		mnObtenerFechaPartidos.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnEstadio.add(mnObtenerFechaPartidos);
+
 		
 		JMenuItem mnSaberOcupacion = new JMenuItem("Saber Ocupacion del Estadio");
+		mnSaberOcupacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 saberOcupacion = new SaberOcupacion();
+				 saberOcupacion.setVisible(true);
+			}
+		});
 		mnSaberOcupacion.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnEstadio.add(mnSaberOcupacion);
+		
+		
+		
+		
+		//AQUI EMPIEZA ARBITRO
+		
 		
 		JMenu mnArbitro = new JMenu("Arbitro");
 		mnArbitro.setForeground(Color.BLACK);
@@ -170,28 +296,49 @@ public class MenuPrincipal extends JFrame {
 		menuBar.add(mnArbitro);
 		
 		JMenuItem mnArbitroPrincipal = new JMenuItem("Arbitros");
+		mnArbitroPrincipal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 arbitroDiseño = new ArbitDiseño();
+				 arbitroDiseño.setVisible(true);
+			}
+		});
 		mnArbitroPrincipal.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnArbitro.add(mnArbitroPrincipal);
 		
 		JMenuItem mnMediaAmarillasPartido = new JMenuItem("Media de Amarillas por Partido");
+		mnMediaAmarillasPartido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 mediaAmarillas = new MediaAmarillasPartido();
+				 mediaAmarillas.setVisible(true);
+				
+			}
+		});
 		mnMediaAmarillasPartido.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnArbitro.add(mnMediaAmarillasPartido);
 		
-		JMenuItem mnMediaPartidosArbitrados = new JMenuItem("Media de Partidos Arbitrados");
-		mnMediaPartidosArbitrados.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnArbitro.add(mnMediaPartidosArbitrados);
+		
+	
 		
 		JMenuItem mnMediaRojasPartido = new JMenuItem("Media de Rojas por Partido");
+		mnMediaRojasPartido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mediaRojasPartido = new MediaRojasPartido();
+				mediaRojasPartido.setVisible(true);
+				
+			}
+		});
 		mnMediaRojasPartido.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnArbitro.add(mnMediaRojasPartido);
 		
 		JMenuItem mnMediaTarjetas = new JMenuItem("Media de Tarjetas");
+		mnMediaTarjetas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mediaTarjetasPartido = new MediaTarjetas();
+				mediaTarjetasPartido.setVisible(true);
+			}
+		});
 		mnMediaTarjetas.setFont(new Font("Monospaced", Font.PLAIN, 12));
 		mnArbitro.add(mnMediaTarjetas);
-		
-		JMenuItem mnNumeroTarjetasPartido = new JMenuItem("Numero de Tarjetas por Partido");
-		mnNumeroTarjetasPartido.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		mnArbitro.add(mnNumeroTarjetasPartido);
 		
 		
 		contentPane = new JPanel();

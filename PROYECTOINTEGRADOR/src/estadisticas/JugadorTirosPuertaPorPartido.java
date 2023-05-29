@@ -20,24 +20,23 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class JugadorTirosPorPartido extends JFrame {
+public class JugadorTirosPuertaPorPartido extends JFrame {
     private JTable table;
-    private JComboBox<String> comboEquipos;
     private JComboBox<String> comboJugadores;
+    private JComboBox<String> comboEquipos;
 
-    public JugadorTirosPorPartido() {
-    	
+    public JugadorTirosPuertaPorPartido() {
     	setBounds(100,100,861,578);
-        JPanel panelTirosPuerta = new JPanel();
-        panelTirosPuerta.setBackground(new Color(119, 136, 153));
-        getContentPane().add(panelTirosPuerta, BorderLayout.CENTER);
-        panelTirosPuerta.setLayout(null);
+        JPanel panelPasesJugadorPartido = new JPanel();
+        panelPasesJugadorPartido.setBackground(new Color(119, 136, 153));
+        getContentPane().add(panelPasesJugadorPartido, BorderLayout.CENTER);
+        panelPasesJugadorPartido.setLayout(null);
 
-        JLabel lblTirosPuerta = new JLabel("tiros de jugadores");
-        lblTirosPuerta.setForeground(new Color(255, 255, 255));
-        lblTirosPuerta.setFont(new Font("Star Jedi", Font.PLAIN, 21));
-        lblTirosPuerta.setBounds(275, 35, 390, 29);
-        panelTirosPuerta.add(lblTirosPuerta);
+        JLabel lblPasesJugadorPartido = new JLabel("tiros a puerta de jugadores");
+        lblPasesJugadorPartido.setForeground(new Color(255, 255, 255));
+        lblPasesJugadorPartido.setFont(new Font("Star Jedi", Font.PLAIN, 21));
+        lblPasesJugadorPartido.setBounds(182, 42, 454, 37);
+        panelPasesJugadorPartido.add(lblPasesJugadorPartido);
 
         comboEquipos = new JComboBox<>();
         comboEquipos.addActionListener(new ActionListener() {
@@ -73,23 +72,23 @@ public class JugadorTirosPorPartido extends JFrame {
 
         	}
         });
-        comboEquipos.setBounds(238, 92, 120, 21);
-        panelTirosPuerta.add(comboEquipos);
+        comboEquipos.setBounds(205, 104, 120, 21);
+        panelPasesJugadorPartido.add(comboEquipos);
 
-        JButton btnTirosPuerta = new JButton("BUSCAR");
-        btnTirosPuerta.addActionListener(new ActionListener() {
+        JButton btnPasesJugadorPartido = new JButton("BUSCAR");
+        btnPasesJugadorPartido.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
         		String jugadorSeleccionado = comboJugadores.getSelectedItem().toString();
 				buscarJugador(jugadorSeleccionado);
         	}
         });
-        btnTirosPuerta.setBounds(629, 92, 85, 21);
-        panelTirosPuerta.add(btnTirosPuerta);
+        btnPasesJugadorPartido.setBounds(576, 104, 85, 21);
+        panelPasesJugadorPartido.add(btnPasesJugadorPartido);
 
-        JScrollPane scrollPaneTirosPuerta = new JScrollPane();
-        scrollPaneTirosPuerta.setBounds(67, 145, 674, 36);
-        panelTirosPuerta.add(scrollPaneTirosPuerta);
+        JScrollPane scrollPanePasesJugadorPartido = new JScrollPane();
+        scrollPanePasesJugadorPartido.setBounds(55, 153, 674, 37);
+        panelPasesJugadorPartido.add(scrollPanePasesJugadorPartido);
 
         table = new JTable();
         table.setBackground(new Color(240, 248, 255));
@@ -98,24 +97,25 @@ public class JugadorTirosPorPartido extends JFrame {
         		{null, null, null, null},
         	},
         	new String[] {
-        			"Jugador", "Partidos Jugados", "Tiros", "Media de tiros"
+        		"Jugador", "Partidos Jugados", "Tiros a Puerta", "Media de tiros a puerta"
         	}
         ));
-        scrollPaneTirosPuerta.setViewportView(table);
+        scrollPanePasesJugadorPartido.setViewportView(table);
         
         comboJugadores = new JComboBox<String>();
-        comboJugadores.setBounds(479, 92, 120, 21);
-        panelTirosPuerta.add(comboJugadores);
+        comboJugadores.setBounds(434, 104, 120, 21);
+        panelPasesJugadorPartido.add(comboJugadores);
         
         JLabel lblNewLabel = new JLabel("EQUIPOS");
         lblNewLabel.setForeground(Color.WHITE);
-        lblNewLabel.setBounds(137, 96, 91, 13);
-        panelTirosPuerta.add(lblNewLabel);
+        lblNewLabel.setBackground(Color.WHITE);
+        lblNewLabel.setBounds(132, 108, 102, 13);
+        panelPasesJugadorPartido.add(lblNewLabel);
         
         JLabel lblNewLabel_1 = new JLabel("JUGADORES");
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(391, 96, 113, 13);
-        panelTirosPuerta.add(lblNewLabel_1);
+        lblNewLabel_1.setBounds(348, 108, 110, 13);
+        panelPasesJugadorPartido.add(lblNewLabel_1);
         
       //RELLENAR COMBO EQUIPOS
         try {
@@ -133,7 +133,7 @@ public class JugadorTirosPorPartido extends JFrame {
 		}
     }
     
-// Método para obtener el cod_equipo a partir del nombre del equipo seleccionado
+ // Método para obtener el cod_equipo a partir del nombre del equipo seleccionado
  	
     private int obtenerCodEquipo(String nombreEquipo) {
      		int codEquipo = 0;
@@ -188,11 +188,11 @@ public class JugadorTirosPorPartido extends JFrame {
 			while (miResultSet.next()) {
 				String jugador = nombreCompletoJugador;
 				int partidosJugados = miResultSet.getInt("partidos_jugados");
-				int tiros = miResultSet.getInt("tiros");
-				double mediaTiros = tiros / (double) partidosJugados;
-				mediaTiros = Math.round(mediaTiros * 100.0) / 100.0;
+				int tirosPuerta = miResultSet.getInt("tiros_puerta");
+				double mediaTirosPuerta = tirosPuerta / (double) partidosJugados;
+				mediaTirosPuerta = Math.round(mediaTirosPuerta * 100.0) / 100.0;
 
-				Object[] row = { jugador, partidosJugados, tiros, mediaTiros };
+				Object[] row = { jugador, partidosJugados, tirosPuerta, mediaTirosPuerta };
 				model.addRow(row);
 			}
 		} catch (SQLException e) {
@@ -201,10 +201,13 @@ public class JugadorTirosPorPartido extends JFrame {
 		}
 	}
 
+
+
     public static void main(String[] args) {
-        JugadorTirosPorPartido tirosPuertaPorPartido = new JugadorTirosPorPartido();
-        tirosPuertaPorPartido.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        tirosPuertaPorPartido.setSize(800, 600);
-        tirosPuertaPorPartido.setVisible(true);
+        JugadorTirosPuertaPorPartido jugadorPasesPorPartido = new JugadorTirosPuertaPorPartido();
+        jugadorPasesPorPartido.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jugadorPasesPorPartido.setSize(800, 600);
+        jugadorPasesPorPartido.setVisible(true);
     }
 }
+
